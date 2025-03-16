@@ -15,6 +15,5 @@ class AppPages {
     GetPage(name: AppRoutes.home, page: () => HomeView()),
     //GetPage(name: AppRoutes.search, page: () => SearchScreen()),
     GetPage(name: AppRoutes.profile, page: () => ProfileView()),
-    //GetPage(name: AppRoutes.notifications, page: () => NotificationsScreen()),
   ];
 }

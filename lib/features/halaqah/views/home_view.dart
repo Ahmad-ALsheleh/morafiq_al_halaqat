@@ -11,7 +11,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final NavController navController = Get.put(NavController()); // استدعاء الكونترولر بشكل صحيح
+  final NavController navController = Get.put(NavController());
 
   @override
   Widget build(BuildContext context) {
