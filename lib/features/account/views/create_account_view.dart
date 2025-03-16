@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/constant.dart';
+import 'login_view.dart';
 
 class CreateAccountView extends StatefulWidget {
   const CreateAccountView({super.key});
@@ -41,16 +43,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
-                        textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
-                          label: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'البريد الإلكتروني',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w400,
-                              ),
+                          label: Text(
+                            'البريد الإلكتروني',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
@@ -61,16 +59,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
-                        textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
-                          label: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'إنشاء كلمة المرور',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w400,
-                              ),
+                          label: Text(
+                            'إنشاء كلمة المرور',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
@@ -80,16 +74,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
-                        textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
-                          label: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'تأكيد كلمة المرور',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w400,
-                              ),
+                          label: Text(
+                            'تأكيد كلمة المرور',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
@@ -99,7 +89,9 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Padding(
                       padding: EdgeInsets.symmetric(),
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.off(LoginView());
+                          },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 112),

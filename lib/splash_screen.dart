@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'core/constant.dart';
+import 'core/routes/app_routes.dart';
 import 'features/account/views/login_view.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,10 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState(){
     super.initState();
-    Timer(Duration(seconds: 0),(){
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginView()),
-      );
+    Timer(Duration(seconds: 3),(){
+      Get.offNamed(AppRoutes.login);
     });
   }
   @override

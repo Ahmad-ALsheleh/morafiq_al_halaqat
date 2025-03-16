@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'core/constant.dart';
+import 'core/routes/app_pages.dart';
+import 'core/routes/app_routes.dart';
 import 'splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,6 +20,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'مرافق الحلقات',
+
+      locale: Locale('ar'),
 
       themeMode: ThemeMode.system,
 
@@ -49,19 +54,19 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      // darkTheme: ThemeData(
-      //   fontFamily: 'Somar_Regular',
-      //   colorScheme: ColorScheme.fromSeed(
-      //       seedColor: goldenColor, brightness: Brightness.dark),
-      //   elevatedButtonTheme: ElevatedButtonThemeData(
-      //     style: ElevatedButton.styleFrom(
-      //       backgroundColor: goldenColor,
-      //       foregroundColor: whiteColoe,
-      //       shape: RoundedRectangleBorder(
-      //         borderRadius: BorderRadius.circular(12),
-      //       ),
-      //     ),
-      //   ),
+      //  darkTheme: ThemeData(
+      //    fontFamily: 'Somar_Regular',
+      //    colorScheme: ColorScheme.fromSeed(
+      //        seedColor: goldenColor, brightness: Brightness.dark),
+      //    elevatedButtonTheme: ElevatedButtonThemeData(
+      //      style: ElevatedButton.styleFrom(
+      //        backgroundColor: goldenColor,
+      //        foregroundColor: whiteColoe,
+      //        shape: RoundedRectangleBorder(
+      //          borderRadius: BorderRadius.circular(12),
+      //        ),
+      //      ),
+      //    ),
       //   inputDecorationTheme: InputDecorationTheme(
       //     border: OutlineInputBorder(
       //       borderRadius: BorderRadius.circular(11),
@@ -78,7 +83,8 @@ class MyApp extends StatelessWidget {
       //   ),
       // ),
 
-      home: SplashScreen(),
+      initialRoute: AppRoutes.splash,
+      getPages: AppPages.routes,
     );
   }
 }

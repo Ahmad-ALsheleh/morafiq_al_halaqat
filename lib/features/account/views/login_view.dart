@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morafiq_al_halaqat/core/constant.dart';
+import 'package:morafiq_al_halaqat/features/halaqah/views/home_view.dart';
 
+import '../../../core/routes/app_routes.dart';
 import 'create_account_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -47,16 +49,12 @@ class _LoginViewState extends State<LoginView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
-                        textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
-                          label: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'البريد الإلكتروني',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w400,
-                              ),
+                          label: Text(
+                            'البريد الإلكتروني',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
@@ -66,16 +64,12 @@ class _LoginViewState extends State<LoginView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
-                        textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
-                          label: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'كلمة المرور',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w400,
-                              ),
+                          label: Text(
+                            'كلمة المرور',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
@@ -86,8 +80,7 @@ class _LoginViewState extends State<LoginView> {
                       padding: EdgeInsets.symmetric(),
                       child: ElevatedButton(
                           onPressed: () {
-
-                          },
+                            Get.offAllNamed(AppRoutes.home);                          },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(vertical: 5,horizontal: 112),
                              shape: RoundedRectangleBorder(
@@ -111,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
                           Text('لا تملك حساب ؟',style: TextStyle(fontSize: 20),),
                           TextButton(
                             onPressed: () {
-                              Get.off(CreateAccountView());
+                              Get.toNamed(AppRoutes.createAccount);
                             },
                             child: Text(
                               "إنشاء حساب",
