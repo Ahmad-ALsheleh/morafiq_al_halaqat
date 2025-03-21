@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constant.dart';
+import '../controllers/create_account_controller.dart';
 import 'login_view.dart';
 
 class CreateAccountView extends StatefulWidget {
@@ -12,6 +13,13 @@ class CreateAccountView extends StatefulWidget {
 }
 
 class _CreateAccountViewState extends State<CreateAccountView> {
+  final CreateAccountController controller = Get.put(CreateAccountController());
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +45,14 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 height: 30,
               ),
               Form(
+                key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
+                        controller: emailController,
                         decoration: InputDecoration(
                           label: Text(
                             'البريد الإلكتروني',
@@ -59,6 +69,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
+                        controller: passwordController,
                         decoration: InputDecoration(
                           label: Text(
                             'إنشاء كلمة المرور',
@@ -74,6 +85,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextFormField(
+                        controller: confirmPasswordController,
                         decoration: InputDecoration(
                           label: Text(
                             'تأكيد كلمة المرور',
@@ -89,8 +101,14 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Padding(
                       padding: EdgeInsets.symmetric(),
                       child: ElevatedButton(
-                          onPressed: () {
+
+                          onPressed: () async {
+                            var  controller =
+                            Get.find<CreateAccountController>();
+
+                            await controller.createAccount(emailController.text, passwordController.text);
                             Get.off(LoginView());
+
                           },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(

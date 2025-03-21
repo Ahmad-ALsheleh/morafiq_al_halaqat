@@ -37,14 +37,17 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_launcher_icons: ^0.14.3
   get: ^4.7.2
+  firebase_core:
+  firebase_auth:
 
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/Logo.png"  # ضع مسار أيقونتك هنا
-  adaptive_icon_background: "#ffffff" # لون الخلفية للأيقونات التكيفية
-  #adaptive_icon_foreground: "assets/icon/app_icon_foreground.png" # اختياري
-  remove_alpha_ios: true  # حذف قناة الألفا من الأيقونات الخاصة بنظام iOS
+
+#flutter_icons:
+#  android: true
+#  ios: true
+#  image_path: "assets/images/Logo.png"  # ضع مسار أيقونتك هنا
+#  adaptive_icon_background: "#ffffff" # لون الخلفية للأيقونات التكيفية
+#  #adaptive_icon_foreground: "assets/icon/app_icon_foreground.png" # اختياري
+#  remove_alpha_ios: true  # حذف قناة الألفا من الأيقونات الخاصة بنظام iOS
 dev_dependencies:
 
   flutter_test:

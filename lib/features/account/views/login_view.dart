@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morafiq_al_halaqat/core/constant.dart';
-import 'package:morafiq_al_halaqat/features/halaqah/views/home_view.dart';
-
 import '../../../core/routes/app_routes.dart';
-import 'create_account_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -80,12 +77,14 @@ class _LoginViewState extends State<LoginView> {
                       padding: EdgeInsets.symmetric(),
                       child: ElevatedButton(
                           onPressed: () {
-                            Get.offAllNamed(AppRoutes.home);                          },
+                            Get.offAllNamed(AppRoutes.home);
+                          },
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 5,horizontal: 112),
-                             shape: RoundedRectangleBorder(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 112),
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(11),
-                             ),
+                            ),
                           ),
                           child: Text(
                             'تسجيل الدخول ',
@@ -101,24 +100,27 @@ class _LoginViewState extends State<LoginView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('لا تملك حساب ؟',style: TextStyle(fontSize: 20),),
                           TextButton(
                             onPressed: () {
                               Get.toNamed(AppRoutes.createAccount);
                             },
                             child: Text(
-                              "إنشاء حساب",
-                              style: TextStyle(
-                                color: blackColoe,
-                                fontSize: 20,fontWeight: FontWeight.w700,
-                              ),
+                              'لا تملك حساب ؟  إنشاء حساب',
+                              style: TextStyle(fontSize: 20,color: blackColor,),
+                            ),
+                          ),
+                          Text(
+                            "إنشاء حساب",
+                            style: TextStyle(
+                              color: blueColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(height: 80),
-
                   ],
                 ),
               )

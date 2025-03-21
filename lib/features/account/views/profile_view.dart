@@ -4,19 +4,12 @@ import '../../../core/constant.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
+  final ProfileController controller = Get.put(ProfileController());
+
   @override
   Widget build(BuildContext context) {
-    final ProfileController controller = Get.put(ProfileController());
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(
-        title: Text('البروفايل', style: TextStyle(color: Colors.black)),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -26,14 +19,14 @@ class ProfileView extends GetView<ProfileController> {
                 alignment: Alignment.bottomRight,
                 children: [
                   CircleAvatar(
-                    radius: 50,
+                    radius: 70,
                     backgroundColor: greyColor,
-                    child: Icon(Icons.person, color: praimaryColor, size: 60),
+                    child: Icon(Icons.person, color: praimaryColor, size: 70),
                   ),
                   CircleAvatar(
                     radius: 15,
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.camera_alt, color: Colors.black, size: 18),
+                    backgroundColor: whiteColor,
+                    child: Icon(Icons.camera_alt, color:blackColor, size: 18),
                   ),
                 ],
               ),
@@ -41,24 +34,34 @@ class ProfileView extends GetView<ProfileController> {
             SizedBox(height: 10),
             Obx(() => Text(
               controller.userName.value,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             )),
-            Obx(() => Text(controller.email.value, style: TextStyle(color: Colors.grey))),
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                controller.updateProfile('اسم جديد', 'رقم جديد', 'إيميل جديد');
+                Get.snackbar(
+                  "ميزة قيد التطوير",
+                  "هذه الميزة غير متاحة حالياً",
+                  snackPosition: SnackPosition.TOP,
+                  backgroundColor: praimaryColor,
+                  colorText: whiteColor,
+                  duration: Duration(seconds: 2),
+                  borderRadius: 12,
+                  margin: EdgeInsets.all(12),
+                  icon: Icon(Icons.info, color: whiteColor, size: 28),
+                );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
+                backgroundColor: praimaryColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20.5),
                 ),
               ),
-              child: Text('تعديل', style: TextStyle(color: Colors.white)),
+              child: Text('تعديل', style: TextStyle(fontSize: 25, color: whiteColor)),
             ),
+
             SizedBox(height: 20),
-            _buildSectionTitle('معلومات الحساب'),
+            _buildSectionTitle('معلومات الحساب',),
             Obx(() => _buildProfileItem(Icons.edit, 'الاسم والنسبة', controller.userName.value)),
             Obx(() => _buildProfileItem(Icons.phone, 'رقم الهاتف', controller.phoneNumber.value)),
             Obx(() => _buildProfileItem(Icons.email, 'البريد الإلكتروني', controller.email.value)),
@@ -71,14 +74,13 @@ class ProfileView extends GetView<ProfileController> {
             ElevatedButton.icon(
               onPressed: controller.logout,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                backgroundColor: praimaryColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              icon: Icon(Icons.logout, color: Colors.white),
-              label: Text('تسجيل خروج', style: TextStyle(color: Colors.white)),
+              icon: Icon(Icons.logout, color: whiteColor),
+              label: Text('تسجيل خروج', style: TextStyle(fontSize:25,color: whiteColor)),
             ),
             SizedBox(height: 20),
           ],
@@ -102,10 +104,9 @@ class ProfileView extends GetView<ProfileController> {
 
   Widget _buildProfileItem(IconData icon, String title, String value) {
     return ListTile(
-      leading: Icon(icon, color: Colors.black54),
+      leading: Icon(icon, color: blackColor),
       title: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-      subtitle: value.isNotEmpty ? Text(value, style: TextStyle(color: Colors.grey)) : null,
-      trailing: Icon(Icons.edit, color: Colors.black54),
+      subtitle: value.isNotEmpty ? Text(value, style: TextStyle(color:blackColor)) : null,
     );
   }
 }
