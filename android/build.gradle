@@ -1,0 +1,81 @@
+buildscript {
+    ext.kotlin_version = '2.1.20'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20"
+        classpath 'com.google.gms:google-services:4.3.15' // أحدث إصدار من google-services
+        //classpath 'com.android.tools.build:gradle:8.2.0' // تحديث Gradle
+        classpath 'com.android.tools.build:gradle:8.3.0'
+
+    }
+
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//allprojects {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
+//
+//rootProject.buildDir = "../build"
+//subprojects {
+//    project.buildDir = "${rootProject.buildDir}/${project.name}"
+//}
+//subprojects {
+//    project.evaluationDependsOn(":app")
+//}
+//
+//tasks.register("clean", Delete) {
+//    delete rootProject.buildDir
+//}
+//buildscript {
+//    repositories {
+//        google()  // ✅ ضروري لتحميل  google-services
+//        mavenCentral()
+//    }
+//    dependencies {
+//        // ... other dependencies
+//        classpath 'com.google.gms:google-services:4.3.8'
+//    }
+//}
+//ext.kotlin_version = '2.1.0'

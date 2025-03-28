@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "636941731403",
+    "project_id": "morafiq-al-halaqat",
+    "storage_bucket": "morafiq-al-halaqat.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636941731403:android:d993e1d7917c336f356fce",
+        "android_client_info": {
+          "package_name": "com.example.morafiq_al_halaqat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkH85sbqKxJSZSEm2FbV1GEb79915c438"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
