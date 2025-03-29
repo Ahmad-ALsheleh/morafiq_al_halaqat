@@ -1,40 +1,41 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:async';
 import 'package:get/get.dart';
 
+import '../repositorys/statistics_repository.dart';
+
 class StatisticsController extends GetxController {
+  final StatisticsRepository _repository = StatisticsRepository();
+
   var studentsCount = 0.obs;
   var lessonsCount = 0.obs;
 
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  void listenToStatistics() {
-    final user = _auth.currentUser;
-    if (user == null) return;
-
-    _firestore
-        .collection('users')
-        .doc(user.uid)
-        .collection('students')
-        .snapshots()
-        .listen((snapshot) {
-      studentsCount.value = snapshot.size;
-    });
-
-    _firestore
-        .collection('users')
-        .doc(user.uid)
-        .collection('lessons')
-        .snapshots()
-        .listen((snapshot) {
-      lessonsCount.value = snapshot.size;
-    });
-  }
+  StreamSubscription<int>? studentsSubscription;
+  StreamSubscription<int>? lessonsSubscription;
 
   @override
   void onInit() {
     super.onInit();
     listenToStatistics();
+  }
+
+  @override
+  void onClose() {
+    studentsSubscription?.cancel();
+    lessonsSubscription?.cancel();
+    super.onClose();
+  }
+
+  void listenToStatistics() {
+    studentsSubscription = _repository.getStudentsCountStream().listen(
+          (count) {
+        studentsCount.value = count;
+      },
+    );
+
+    lessonsSubscription = _repository.getLessonsCountStream().listen(
+          (count) {
+        lessonsCount.value = count;
+      },
+    );
   }
 }

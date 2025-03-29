@@ -14,7 +14,6 @@ class SplashController extends GetxController {
     await Future.delayed(Duration(seconds: 1));
 
     User? user = FirebaseAuth.instance.currentUser;
-    //print(user);
 
     if (user != null) {
       Get.offNamed(AppRoutes.home);

@@ -7,10 +7,10 @@ import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   final ProfileController controller = Get.put(ProfileController());
+  final logOutController = Get.put(LogOutController());
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -21,7 +21,6 @@ class ProfileView extends GetView<ProfileController> {
                 alignment: Alignment.bottomRight,
                 children: [
                   CircleAvatar(
-
                     radius: 70,
                     backgroundColor: bgColor,
                     child: Image.asset(
@@ -31,7 +30,7 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   ),
                   GestureDetector(
-                    onTap:(){
+                    onTap: () {
                       Get.snackbar(
                         "ميزة قيد التطوير",
                         "هذه الميزة غير متاحة حالياً",
@@ -45,19 +44,23 @@ class ProfileView extends GetView<ProfileController> {
                       );
                     },
                     child: CircleAvatar(
-
                       radius: 18,
                       backgroundColor: bkiconsColor,
-                      child: SvgPicture.asset('assets/icons/camera.svg', width:29.17, height: 26.25,
-                        colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),),
+                      child: SvgPicture.asset(
+                        'assets/icons/camera.svg',
+                        width: 29.17,
+                        height: 26.25,
+                        colorFilter:
+                            ColorFilter.mode(blackColor, BlendMode.srcIn),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-
             SizedBox(height: 10),
-            Text( controller.email.value ,style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold)),
+            Text(controller.email.value,
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -79,26 +82,55 @@ class ProfileView extends GetView<ProfileController> {
                   borderRadius: BorderRadius.circular(20.5),
                 ),
               ),
-              child: Text('تعديل', style: TextStyle(fontSize: 27, color: whiteColor)),
+              child: Text('تعديل',
+                  style: TextStyle(fontSize: 27, color: whiteColor)),
             ),
-
             SizedBox(height: 20),
-            _buildSectionTitle('معلومات الحساب',),
-
-            Obx(() => _buildProfileItem(SvgPicture.asset('assets/icons/email.svg', width: 26.17, height: 20.33,
-              colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),) , 'البريد الإلكتروني', controller.email.value)),
-            _buildProfileItem(SvgPicture.asset('assets/icons/lock.svg', width:21.33, height: 28,
-              colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),), 'كلمة المرور', controller.password.value),
+            _buildSectionTitle(
+              'معلومات الحساب',
+            ),
+            Obx(() => _buildProfileItem(
+                SvgPicture.asset(
+                  'assets/icons/email.svg',
+                  width: 26.17,
+                  height: 20.33,
+                  colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),
+                ),
+                'البريد الإلكتروني',
+                controller.email.value)),
+            _buildProfileItem(
+                SvgPicture.asset(
+                  'assets/icons/lock.svg',
+                  width: 21.33,
+                  height: 28,
+                  colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),
+                ),
+                'كلمة المرور',
+                controller.password.value),
             SizedBox(height: 20),
             _buildSectionTitle('معلومات أخرى'),
-            _buildProfileItem(SvgPicture.asset('assets/icons/settings.svg', width:24.56, height: 25,
-              colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),), 'الإعدادات', ''),
-            _buildProfileItem(SvgPicture.asset('assets/icons/them.svg', width:23.75, height: 25,
-              colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),), 'ثيم التطبيق', ''),
+            _buildProfileItem(
+                SvgPicture.asset(
+                  'assets/icons/settings.svg',
+                  width: 24.56,
+                  height: 25,
+                  colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),
+                ),
+                'الإعدادات',
+                ''),
+            _buildProfileItem(
+                SvgPicture.asset(
+                  'assets/icons/them.svg',
+                  width: 23.75,
+                  height: 25,
+                  colorFilter: ColorFilter.mode(blackColor, BlendMode.srcIn),
+                ),
+                'ثيم التطبيق',
+                ''),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: ()  {
-                logout_controller();
+              onPressed: () {
+                Get.find<LogOutController>().logout();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: praimaryColor,
@@ -106,9 +138,9 @@ class ProfileView extends GetView<ProfileController> {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              child: Text('تسجيل خروج', style: TextStyle(fontSize: 27, color: whiteColor)),
+              child: Text('تسجيل خروج',
+                  style: TextStyle(fontSize: 27, color: whiteColor)),
             ),
-
             SizedBox(height: 20),
           ],
         ),
@@ -131,8 +163,9 @@ class ProfileView extends GetView<ProfileController> {
 
   Widget _buildProfileItem(Widget icon, String title, String value) {
     return ListTile(
-      onTap: (){
-        Get.snackbar( "ميزة قيد التطوير",
+      onTap: () {
+        Get.snackbar(
+          "ميزة قيد التطوير",
           "هذه الميزة غير متاحة حالياً",
           snackPosition: SnackPosition.TOP,
           backgroundColor: praimaryColor,
@@ -140,11 +173,15 @@ class ProfileView extends GetView<ProfileController> {
           duration: Duration(seconds: 2),
           borderRadius: 12,
           margin: EdgeInsets.all(12),
-          icon: Icon(Icons.info, color: whiteColor, size: 28),);
+          icon: Icon(Icons.info, color: whiteColor, size: 28),
+        );
       },
-      leading:icon,
-      title: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-      subtitle: value.isNotEmpty ? Text(value, style: TextStyle(color:blackColor)) : null,
+      leading: icon,
+      title: Text(title,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+      subtitle: value.isNotEmpty
+          ? Text(value, style: TextStyle(color: blackColor))
+          : null,
     );
   }
 }

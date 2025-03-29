@@ -55,10 +55,18 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
+
        darkTheme: ThemeData(
          fontFamily: 'Somar_Regular',
          colorScheme: ColorScheme.fromSeed(
              seedColor: goldenColor, brightness: Brightness.dark),
+
+         appBarTheme: AppBarTheme(
+           backgroundColor: blackColor,
+           iconTheme: IconThemeData(color: whiteColor),
+           titleTextStyle: TextStyle(color: whiteColor,fontFamily: 'Somar_Regular',),
+
+         ),
          elevatedButtonTheme: ElevatedButtonThemeData(
            style: ElevatedButton.styleFrom(
              backgroundColor: goldenColor,

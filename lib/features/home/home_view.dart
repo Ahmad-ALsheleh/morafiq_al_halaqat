@@ -4,13 +4,12 @@ import 'package:get/get.dart';
 import '../../search_view.dart';
 import '../../core/constant.dart';
 import '../account/views/profile_view.dart';
-import '../halaqah/views/my_halaqah_view.dart';
+import '../students/views/students_view.dart';
 import 'nav_controller.dart';
 import '../halaqah_statistics/views/halaqah_statistics_view.dart';
-import 'home_main_view.dart';
+import '../lessons/views/lesson_view.dart';
 
 class HomeView extends StatefulWidget {
-  //HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -21,8 +20,8 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Widget> pages = [
     ProfileView(),
-    MyHalaqahView(),
-    HomeMainView(),
+    StudentsView(),
+    LessonView(),
     Searchview(),
     HalaqahStatisticsView(),
   ];
@@ -32,7 +31,6 @@ class _HomeViewState extends State<HomeView> {
     return Obx(
       () => Scaffold(
           appBar: AppBar(
-            backgroundColor: whiteColor,
             actions: [
               IconButton(
                 icon: SvgPicture.asset(
